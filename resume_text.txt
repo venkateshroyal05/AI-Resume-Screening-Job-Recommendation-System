@@ -1,0 +1,96 @@
+Venkatesh Midde 
+Associate Software Engineering 
+Aspiring Software Engineer with a strong foundation in programming, database management, and
+software development concepts. Experienced in academic and personal projects using Python, Java,
+HTML, CSS, and JavaScript. Passionate about learning new technologies and building eﬃcient software
+solutions. 
+middevenkatesh12@gmail.com 
+9502536411 
+Hyderabad, India 
+EDUCATION 
+BTech/ Computer Science and Engineering 
+Vel Tech Rangarajan Dr. Sagunthala R and D
+Institute of Science and Technology 
+07/2022 - 05/2026
+, 
+ 
+7.9 CGPA  Chennai 
+Higher Secondary 
+Pragna Junior College 
+08/2020 - 04/2022
+, 
+ 
+82%  Allagadda 
+Secondary School Certiﬁcate (SSC) 
+AP Model School 
+06/2019 - 04/2020
+, 
+ 
+91%   Uyyalawada 
+Study Program 
+Institution/Place of Education 
+CERTIFICATIONS & TRAININGS 
+Data Science Training 
+Datamites 
+05/2026 - Present
+, 
+ 
+Hyderabad 
+Currently undergoing training in Python, Statistics, Machine
+Learning, SQL, MongoDB, and Data Visualization. 
+Working on hands-on projects and real-world datasets. 
+Regularly solve coding challenges on 
+HackerRank
+ 
+to
+strengthen problem-solving and programming skills. 
+Understanding of Artiﬁcial Intelligence and Machine
+Learning concepts. 
+Experience using Python libraries such as Jyputer Notebook
+and Numpy. 
+Knowledge of supervised and unsupervised learning
+techniques. 
+SKILLS 
+python 
+java 
+C 
+HTML 
+CSS 
+JavaScript 
+SQL 
+MongoDB 
+AWS 
+AI Engineering 
+PERSONAL PROJECTS 
+CUSTOMER CHURN PREDICTION IN BANKING USING
+FEDERATED LEARNING 
+Developed a privacy-preserving machine learning model using
+federated learning to predict customer churn 
+in the banking sector,
+improving prediction accuracy and supporting retention strategies. 
+Implemented Federated Learning to train models across
+distributed datasets while preserving customer privacy and data
+security. 
+Performed data preprocessing, feature engineering, and model
+evaluation to improve prediction accuracy. 
+E-Book Platform 
+Developed & designed a full-stack e-book platform using
+HTML,CSS,& JS. 
+ARDUINO-POWERED INTELLIGENT PARKING
+MANAGEMENT SYSTEM 
+Designed and implemented a smart parking system using Arduino
+to monitor real-time slot 
+CERTIFICATES 
+Python for Beginners (Infosys Springboard Online). 
+Java Programming Fundamentals (Infosys Springboard
+Online). 
+Programming Skill In C(Infosys Springboard Online). 
+LANGUAGES 
+English 
+Professional Working Proﬁciency 
+Telugu 
+Native or Bilingual Proﬁciency 
+INTERESTS 
+Learning New Technologies 
+Programming (Python) 
+Achievements/Tasks 
