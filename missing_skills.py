@@ -1,25 +1,15 @@
 import pandas as pd
+import re
 
-# Load dataset
-df = pd.read_csv("dataset/preprocessed_resume_data.csv")
-
-# Replace empty values
-df = df.fillna("")
-
-# Read resume text
-with open("resume_text.txt", "r", encoding="utf-8") as file:
-    resume_text = file.read().lower()
-
-
-# Skills present in the resume
-resume_skills = [
+# Skills that the system can recognize
+SKILLS = [
     "python",
     "java",
-    "c",
     "c++",
+    "c",
     "sql",
-    "mongodb",
     "mysql",
+    "mongodb",
     "html",
     "css",
     "javascript",
@@ -32,6 +22,7 @@ resume_skills = [
     "pandas",
     "numpy",
     "scikit learn",
+    "scikit-learn",
     "statistics",
     "data visualization",
     "tableau",
@@ -45,68 +36,110 @@ resume_skills = [
     "git",
     "linux",
     "nlp",
-    "computer vision"
+    "computer vision",
+    "rest api",
+    "software development",
+    "business analysis",
+    "effective communication",
+    "design",
+    "soft skills",
+    "etl",
+    "data analytics",
+    "big data"
 ]
 
 
-# Find skills actually present in resume
-found_skills = []
+def contains_skill(text, skill):
 
-for skill in resume_skills:
-    if skill in resume_text:
-        found_skills.append(skill)
+    text = str(text).lower()
 
+    if skill == "c":
+        return bool(
+            re.search(r"(?<![a-z+])c(?![a-z+])", text)
+        )
 
-# Select the top recommended job
-recommended_job = "ai engineer"
+    if skill == "c++":
+        return "c++" in text
 
+    if skill in ["scikit learn", "scikit-learn"]:
+        return bool(
+            re.search(r"scikit[- ]learn", text)
+        )
 
-# Find rows related to the recommended job
-job_rows = df[
-    df["job_position_name"].str.lower() == recommended_job
-]
-
-
-# Collect required skills
-required_skills = set()
-
-for skills in job_rows["skills_required"]:
-
-    skills = str(skills).lower()
-
-    for skill in resume_skills:
-
-        if skill in skills:
-            required_skills.add(skill)
+    return bool(
+        re.search(
+            r"(?<![a-z])"
+            + re.escape(skill)
+            + r"(?![a-z])",
+            text
+        )
+    )
 
 
-# Find missing skills
-missing_skills = []
+def get_resume_skills(resume_text):
 
-for skill in required_skills:
+    found = []
 
-    if skill not in found_skills:
-        missing_skills.append(skill)
+    for skill in SKILLS:
+
+        if contains_skill(resume_text, skill):
+            found.append(skill)
+
+    return set(found)
 
 
-# Display results
-print("\n===== RECOMMENDED JOB =====")
-print(recommended_job)
+def get_job_skills(job_text):
 
-print("\n===== YOUR SKILLS =====")
+    found = []
 
-for skill in sorted(found_skills):
-    print("-", skill)
+    for skill in SKILLS:
 
-print("\n===== MISSING SKILLS =====")
+        if contains_skill(job_text, skill):
+            found.append(skill)
 
-if len(missing_skills) == 0:
+    return set(found)
 
-    print("No major missing skills found!")
 
-else:
+def find_missing_skills(
+    resume_text,
+    recommended_job
+):
 
-    for skill in sorted(missing_skills):
-        print("-", skill)
+    df = pd.read_csv(
+        "dataset/preprocessed_resume_data.csv"
+    ).fillna("")
 
-print("\nTotal Missing Skills:", len(missing_skills))
+    job_rows = df[
+        df["job_position_name"]
+        .str.lower()
+        == recommended_job.lower()
+    ]
+
+    required_skills = set()
+
+    for value in job_rows["skills_required"]:
+
+        required_skills.update(
+            get_job_skills(value)
+        )
+
+    found_skills = get_resume_skills(
+        resume_text
+    )
+
+    matched_skills = (
+        required_skills
+        & found_skills
+    )
+
+    missing_skills = (
+        required_skills
+        - found_skills
+    )
+
+    return (
+        sorted(found_skills),
+        sorted(matched_skills),
+        sorted(missing_skills),
+        sorted(required_skills)
+    )
